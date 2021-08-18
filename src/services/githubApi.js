@@ -1,3 +1,5 @@
+import 
+
 export const fetchGitHeads = async (username) => {
   const user = await fetch(`https://api.github.com/users/${username}`);
   const json = await user.json();
@@ -6,7 +8,13 @@ export const fetchGitHeads = async (username) => {
 };
 
 export const fetchGitRepos = async (username) => {
-  const user = await fetch(`https://api.github.com/${username}/repos`);
+  const user = await fetch(`https://api.github.com/users/${username}/repos`, {
+    headers: {
+      authorization: `token ${process.env.GIT_AUTH}`
+    }
+  });
   const json = await user.json();
+
+  console.log(json);
   return json;
 };
