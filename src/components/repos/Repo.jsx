@@ -1,9 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-const Repo = () => {
+const Repo = ({ name, html_url, language, created_at }) => {
   return (
     <>
-      <h2>Repo List Item</h2>
+      <h3>{name}</h3>
+      <a>{html_url}</a>
+      <p>{language}</p>
+      <p>{created_at}</p>
     </>
   );
 };

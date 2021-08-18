@@ -1,9 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useUser } from '../../state/UserProvider';
+import { useHistory } from 'react-router-dom';
+import { fetchGitRepos } from '../../services/githubApi';
+import { useUser, useSearchTerm, useRepos } from '../../state/UserProvider';
 
 const UserInfo = () => {
   const { user } = useUser();
+  const { searchTerm } = useSearchTerm();
+  const { setRepos } = useRepos();
+  const history = useHistory();
+
+  const handleClick = () => {
+    fetchGitRepos(searchTerm)
+      .then(setRepos)
+      .then(history.push(`/${user.login}/repos`));
+  };
   return (
     <>
       <h2>rendering userInfo</h2>
@@ -13,7 +23,7 @@ const UserInfo = () => {
       <p>Followers: {user.followers}</p>
       <p>Following: {user.following}</p>
       <p>Profile: {user.url}</p>
-      <Link to={`/${user.login}/repos`}>Check out {user.login}'s Repos</Link>
+      <button onClick={handleClick}>View Repos</button>
     </>
   );
 };

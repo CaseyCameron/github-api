@@ -10,6 +10,7 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={UserInfo} />
+        <Route exact path="/:user" component={UserInfo} />
         <Route exact path="/:user/repos" component={RepoList} />
       </Switch>
     </>
