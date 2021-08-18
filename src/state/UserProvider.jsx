@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
   }, [searchTerm]); 
 
 
-  return (<UserContext.Provider value={{ searchTerm, setSearchTerm, user }}>{children}</UserContext.Provider>);
+  return (<UserContext.Provider value={{ searchTerm, setSearchTerm, user, setUser }}>{children}</UserContext.Provider>);
 };
 
 export const useSearchTerm = () => {
@@ -24,7 +24,7 @@ export const useSearchTerm = () => {
 };
 
 export const useUser = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
-  return user;
+  return { user, setUser };
 };
