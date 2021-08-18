@@ -1,10 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { useSearchTerm, useUser } from '../../state/UserProvider';
+import { useSearchTerm } from '../../state/UserProvider';
 
 const SearchUser = () => {
   const { searchTerm, setSearchTerm } = useSearchTerm();
-  // const { user, setUser } = useUser();
   let searchValue;
 
   const handleChange = ({ target }) => {
