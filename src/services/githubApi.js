@@ -1,6 +1,7 @@
 export const fetchGitHeads = async (username) => {
-  const user =  await fetch(`https://api.github.com/users/${username}`);
+  const user = await fetch(`https://api.github.com/users/${username}`);
   const json = await user.json();
+  console.log(json);
   return json;
 };
 
